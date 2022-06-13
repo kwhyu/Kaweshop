@@ -5,21 +5,80 @@
  */
 
 package user;
-
 import java.io.IOException;
+import AppPackage.AnimationClass;
 
 /**
  *
- * @author RoXen
+ * @author KWHY 
  */
 public class enterscreen extends javax.swing.JFrame {
+    
+    AnimationClass ac = new AnimationClass();
 
     /**
      * Creates new form SpalshScreen
      */
     public enterscreen() {
         initComponents();
+        sliderShow();
     }
+    
+   public void sliderShow(){
+       new Thread(new Runnable(){
+           @Override
+           public void run(){
+               int nb=0;
+               try{
+                   while(true){
+                       switch(nb){
+                           case 0:
+                               Thread.sleep(3000);
+                               ac.jLabelXLeft(810, 0, 50, 50, img1);
+                               ac.jLabelXLeft(1620, 810, 50, 50, img2);
+                               //nb++;
+                               break;
+                           case 1:
+                               Thread.sleep(3000);
+                               ac.jLabelXLeft(0, -810, 50, 50, img1);
+                               ac.jLabelXLeft(810, 0, 50, 50, img2);
+                               //nb++;
+                               break;
+                           case 2:
+                               Thread.sleep(3000);
+                               ac.jLabelXRight(-810, 0, 32, 32, img1);
+                               ac.jLabelXRight(0, 810, 32, 32, img2);
+                               //nb++;
+                               break;
+                           case 3:
+                               Thread.sleep(3000);
+                               ac.jLabelXRight(0, -810, 32, 32, img1);
+                               ac.jLabelXRight(810, 0, 32, 32, img2);
+                               nb=0;
+                               break;
+                           case 4:
+                               Thread.sleep(3000);
+                               ac.jLabelXRight(0, -810, 32, 32, img1);
+                               ac.jLabelXRight(810, 0, 32, 32, img2);
+                               nb++;
+                               break;
+                           case 5:
+                               Thread.sleep(3000);
+                               ac.jLabelXRight(0, -810, 32, 32, img1);
+                               ac.jLabelXRight(810, 0, 32, 32, img2);
+                               nb++;
+                               break;
+                       }
+                       System.out.println(nb);
+                       nb++;
+                   }
+               }catch(Exception ex){
+                   System.out.println("Gagal");
+                   
+               }
+           }
+       }).start();
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,45 +93,41 @@ public class enterscreen extends javax.swing.JFrame {
         jProgressBar2 = new javax.swing.JProgressBar();
         jPanel1 = new javax.swing.JPanel();
         jLabel_SoftZyd = new javax.swing.JLabel();
-        jLabel_inven = new javax.swing.JLabel();
         loadingprogress = new javax.swing.JProgressBar();
         loadingnumber = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jLabel_inven1 = new javax.swing.JLabel();
+        img1 = new javax.swing.JLabel();
+        img2 = new javax.swing.JLabel();
+        img3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new java.awt.CardLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 66, 117));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel_SoftZyd.setFont(new java.awt.Font("Trebuchet MS", 1, 48)); // NOI18N
+        jLabel_SoftZyd.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabel_SoftZyd.setForeground(new java.awt.Color(42, 186, 237));
-        jLabel_SoftZyd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_falcon_100px.png"))); // NOI18N
         jLabel_SoftZyd.setText("KAWE SHOP");
         jLabel_SoftZyd.setToolTipText("");
-        jPanel1.add(jLabel_SoftZyd, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 400, -1));
-
-        jLabel_inven.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jLabel_inven.setForeground(new java.awt.Color(42, 186, 237));
-        jLabel_inven.setText("susahbuatginian@gmail.com");
-        jPanel1.add(jLabel_inven, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 160, 30));
+        jPanel1.add(jLabel_SoftZyd, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 110, 40));
 
         loadingprogress.setForeground(new java.awt.Color(42, 186, 237));
         loadingprogress.setBorderPainted(false);
         loadingprogress.setFocusable(false);
         loadingprogress.setRequestFocusEnabled(false);
         loadingprogress.setVerifyInputWhenFocusTarget(false);
-        jPanel1.add(loadingprogress, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 470, 820, 40));
+        jPanel1.add(loadingprogress, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 810, 10));
 
         loadingnumber.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         loadingnumber.setForeground(new java.awt.Color(42, 186, 237));
         loadingnumber.setText("99%");
-        jPanel1.add(loadingnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 430, -1, -1));
+        jPanel1.add(loadingnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 470, -1, -1));
 
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_Instagram_32px_1.png"))); // NOI18N
@@ -130,35 +185,24 @@ public class enterscreen extends javax.swing.JFrame {
         });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 11, 30, 28));
 
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_secured_letter_32px.png"))); // NOI18N
-        jButton5.setToolTipText("Email");
-        jButton5.setBorder(null);
-        jButton5.setBorderPainted(false);
-        jButton5.setContentAreaFilled(false);
-        jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_gmail_32px.png"))); // NOI18N
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton5MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 30, 28));
-
-        jLabel_inven1.setFont(new java.awt.Font("Trebuchet MS", 0, 36)); // NOI18N
+        jLabel_inven1.setFont(new java.awt.Font("Trebuchet MS", 0, 24)); // NOI18N
         jLabel_inven1.setForeground(new java.awt.Color(42, 186, 237));
         jLabel_inven1.setText("Official Merchandise Store");
-        jPanel1.add(jLabel_inven1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 450, 50));
+        jPanel1.add(jLabel_inven1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 290, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        img1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        img1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/magnificent-woman-long-bright-skirt-dancing-studio-carefree-inspired-female-model-posing-with-pleasure-yellow.jpg"))); // NOI18N
+        jPanel1.add(img1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 810, 500));
+
+        img2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        img2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/slender-girl-great-mood-is-having-fun-dancing-with-bag-her-hands-shot-italian-model-wrap-dress.jpg"))); // NOI18N
+        jPanel1.add(img2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1620, 0, 810, 500));
+
+        img3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        img3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/FCruOnhXoAUb_en.png"))); // NOI18N
+        jPanel1.add(img3, new org.netbeans.lib.awtextra.AbsoluteConstraints(2430, 0, 810, 500));
+
+        getContentPane().add(jPanel1, "card2");
 
         setSize(new java.awt.Dimension(810, 510));
         setLocationRelativeTo(null);
@@ -204,16 +248,6 @@ public class enterscreen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton6MouseClicked
 
-    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
-        // TODO add your handling code here:
-        String url="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJNstnjcnqkPvVfQtSklckCJVSDGzfdtbWljswPCKQgJqLTXNHqpMvsJHvPzbDWsHNMznPL";
-        try { 
-            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
-        } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(enterscreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton5MouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -251,13 +285,14 @@ public class enterscreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel img1;
+    private javax.swing.JLabel img2;
+    private javax.swing.JLabel img3;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel_SoftZyd;
-    private javax.swing.JLabel jLabel_inven;
     private javax.swing.JLabel jLabel_inven1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;

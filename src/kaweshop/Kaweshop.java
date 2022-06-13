@@ -4,12 +4,10 @@
  */
 package kaweshop;
 
-import MT.userlogin;
 import user.enterscreen;
-import user.framecode;
-import user.userloginx;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import user.userloginfix;
 
 /**
  *
@@ -41,7 +39,7 @@ public class Kaweshop {
         // TODO code application logic here
         getkawe();
         enterscreen screen = new enterscreen();
-        userlogin sign = new userlogin();
+        userloginfix sign = new userloginfix();
         screen.setVisible(true);
         try {
             for (int row = 0; row <=100; row++) {
@@ -51,6 +49,8 @@ public class Kaweshop {
                 if (row == 100) {
                     
                     screen.setVisible(false);
+                    screen.dispose();
+                    screen.disable();
                     sign.setVisible(true);
                 }
             }
